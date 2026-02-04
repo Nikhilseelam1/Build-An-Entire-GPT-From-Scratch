@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-
 class LayerNorm(nn.Module):
     def __init__(self, n_embd, eps=1e-5):
         super().__init__()

@@ -2,7 +2,6 @@ import os
 import urllib.request
 import torch
 import yaml
-
 from mini_gpt.models.gpt import GPTModel
 from mini_gpt.data.dataloader import create_dataloader_v1
 from mini_gpt.training.trainer import train_model_simple
