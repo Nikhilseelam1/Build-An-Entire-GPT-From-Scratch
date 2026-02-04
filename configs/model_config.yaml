@@ -1,0 +1,13 @@
+
+vocab_size: 50257        
+block_size: 256          
+
+n_embd: 384             
+
+n_layer: 6               
+n_head: 6                
+dropout: 0.2            
+
+batch_size: 32
+learning_rate: 3.0e-4
+max_epochs: 1
