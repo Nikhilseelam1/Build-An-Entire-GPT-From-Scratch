@@ -69,7 +69,7 @@ val_loader = create_dataloader_v1(
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-model = GPTModel("configs/model_config.yaml")
+model = GPTModel(config)
 optimizer = torch.optim.AdamW(
     model.parameters(),
     lr=learning_rate

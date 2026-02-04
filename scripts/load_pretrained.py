@@ -46,7 +46,7 @@ config.update({
 # ---------------------------
 # Build model
 # ---------------------------
-model = GPTModel("configs/model_config.yaml")
+model = GPTModel(config)
 model.eval()
 
 
