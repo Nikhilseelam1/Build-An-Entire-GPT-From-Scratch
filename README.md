@@ -119,6 +119,3 @@ Focused on **Machine Learning, Deep Learning, Transformers, and LLM internals**
 
 GitHub: https://github.com/Nikhilseelam1
 
-
-If you can explain this project,  
-**you truly understand how Transformers work.**
