@@ -2,29 +2,19 @@ import torch
 import torch.nn.functional as F
 from tqdm import tqdm
 
-
 def calc_loss_batch(input_batch, target_batch, model, device):
-    """
-    Computes cross-entropy loss for one batch
-    """
     input_batch = input_batch.to(device)
     target_batch = target_batch.to(device)
-
     logits = model(input_batch)
     B, T, V = logits.shape
-
     loss = F.cross_entropy(
         logits.view(B * T, V),
         target_batch.view(B * T)
     )
-
     return loss
 
 
 def calc_loss_loader(data_loader, model, device):
-    """
-    Computes average loss over an entire dataloader
-    """
     total_loss = 0.0
     num_batches = 0
 
@@ -50,10 +40,6 @@ def train_model_simple(
     num_epochs,
     eval_interval=100,
 ):
-    """
-    Simple training loop exactly as in the notebook
-    """
-
     model.to(device)
 
     for epoch in range(num_epochs):
