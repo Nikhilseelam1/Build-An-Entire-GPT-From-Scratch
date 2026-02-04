@@ -6,7 +6,6 @@ from mini_gpt.utils.tokenizer import (
     token_ids_to_text,
 )
 
-
 @torch.no_grad()
 def generate(
     model,
@@ -17,18 +16,12 @@ def generate(
     top_k=None,
     eos_id=None,
 ):
-    """
-    Autoregressive generation with optional temperature and top-k sampling
-    (exactly from your notebook)
-    """
-
     for _ in range(max_new_tokens):
         idx_cond = idx[:, -context_size:]
 
         logits = model(idx_cond)
         logits = logits[:, -1, :]
 
-        # Top-k filtering
         if top_k is not None:
             top_logits, _ = torch.topk(logits, top_k)
             min_val = top_logits[:, -1].unsqueeze(-1)
@@ -38,7 +31,6 @@ def generate(
                 logits,
             )
 
-        # Sampling
         if temperature > 0.0:
             logits = logits / temperature
             probs = torch.softmax(logits, dim=-1)
@@ -46,7 +38,6 @@ def generate(
         else:
             idx_next = torch.argmax(logits, dim=-1, keepdim=True)
 
-        # Optional EOS stopping
         if eos_id is not None and idx_next.item() == eos_id:
             break
 
@@ -64,9 +55,6 @@ def generate_text(
     temperature=0.0,
     top_k=None,
 ):
-    """
-    Convenience wrapper for text generation
-    """
 
     model.eval()
     tokenizer = get_tokenizer()

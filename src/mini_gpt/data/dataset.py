@@ -1,11 +1,7 @@
 import torch
 from torch.utils.data import Dataset
 
-
 class GPTDatasetV1(Dataset):
-    """
-    Creates (input_ids, target_ids) pairs using a sliding window
-    """
 
     def __init__(self, txt, tokenizer, max_length, stride):
         self.input_ids = []

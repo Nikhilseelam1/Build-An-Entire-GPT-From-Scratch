@@ -1,8 +1,6 @@
 from torch.utils.data import DataLoader
 import tiktoken
-
 from mini_gpt.data.dataset import GPTDatasetV1
-
 
 def create_dataloader_v1(
     txt,
@@ -14,14 +12,12 @@ def create_dataloader_v1(
     num_workers=0,
 ):
     tokenizer = tiktoken.get_encoding("gpt2")
-
     dataset = GPTDatasetV1(
         txt=txt,
         tokenizer=tokenizer,
         max_length=max_length,
         stride=stride,
     )
-
     dataloader = DataLoader(
         dataset,
         batch_size=batch_size,
@@ -29,5 +25,4 @@ def create_dataloader_v1(
         drop_last=drop_last,
         num_workers=num_workers,
     )
-
     return dataloader
